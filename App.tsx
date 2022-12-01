@@ -6,7 +6,8 @@ import {
   Mesh,
   MeshBasicMaterial,
   PerspectiveCamera,
-  BoxBufferGeometry,
+  BoxGeometry,
+  SphereGeometry
 } from "three";
 import ExpoTHREE, { Renderer } from "expo-three";
 import { ExpoWebGLRenderingContext, GLView } from "expo-gl";
@@ -37,25 +38,25 @@ const App = () => {
 
     // create cube
     // define geometry
-    const geometry = new BoxBufferGeometry(1, 1, 1);
+    const geometry = new SphereGeometry(1, 1, 1);
     const material = new MeshBasicMaterial({
       color: "cyan",
     });
 
-    const cube = new Mesh(geometry, material);
+    const sphere = new Mesh(geometry, material);
 
     // add cube to scene
-    scene.add(cube);
+    scene.add(sphere);
 
     // create render function
     const render = () => {
       requestAnimationFrame(render);
       // create rotate functionality
       // rotate around x axis
-      cube.rotation.x += 0.01;
+      sphere.rotation.x += 0.01;
 
       // rotate around y axis
-      cube.rotation.y += 0.01;
+      sphere.rotation.y += 0.01;
 
       renderer.render(scene, camera);
       gl.endFrameEXP();
